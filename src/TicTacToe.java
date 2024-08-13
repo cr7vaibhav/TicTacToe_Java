@@ -21,19 +21,18 @@ public class TicTacToe {
             printBoard(board);
         }
 
-        // printBoard(board);
-        // sc.close();
+        sc.close();
 
     }
 
     private static boolean isGameOver(char[][] board) {
-        if(hasContestentWon(board, 'X')){
+        if (hasContestentWon(board, 'X')) {
             printBoard(board);
             System.out.println("Player wins !");
             return true;
         }
 
-        if(hasContestentWon(board, 'O')){
+        if (hasContestentWon(board, 'O')) {
             printBoard(board);
             System.out.println("Computer wins !");
             return true;
@@ -75,7 +74,7 @@ public class TicTacToe {
         int computerMove;
         while (true) {
             computerMove = rad.nextInt(9) + 1; // gives no between 0-9 +1
-            if (isValidMove(board, computerMove)) {
+            if (isValidMove(board, Integer.toString(computerMove))) {
                 break;
             }
         }
@@ -84,33 +83,33 @@ public class TicTacToe {
     }
 
     // checks if its a valid move
-    private static boolean isValidMove(char[][] board, int position) {
+    private static boolean isValidMove(char[][] board, String position) {
         switch (position) {
-            case 1:
+            case "1":
                 return (board[0][0] == ' ');
 
-            case 2:
+            case "2":
                 return (board[0][1] == ' ');
 
-            case 3:
+            case "3":
                 return (board[0][2] == ' ');
 
-            case 4:
+            case "4":
                 return (board[1][0] == ' ');
 
-            case 5:
+            case "5":
                 return (board[1][1] == ' ');
 
-            case 6:
+            case "6":
                 return (board[1][2] == ' ');
 
-            case 7:
+            case "7":
                 return (board[2][0] == ' ');
 
-            case 8:
+            case "8":
                 return (board[2][1] == ' ');
 
-            case 9:
+            case "9":
                 return (board[2][2] == ' ');
 
             default:
@@ -124,7 +123,7 @@ public class TicTacToe {
         while (true) {
             System.out.println("Where would you like to play (1-9)");
             userInput = sc.nextLine();
-            if (isValidMove(board, Integer.parseInt(userInput))) {
+            if (isValidMove(board, userInput)) {
                 break;
             } else {
                 System.out.println(userInput + " is not a valid move");
