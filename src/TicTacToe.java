@@ -27,35 +27,47 @@ public class TicTacToe {
     }
 
     private static boolean isGameOver(char[][] board) {
+        if(hasContestentWon(board, 'X')){
+            printBoard(board);
+            System.out.println("Player wins !");
+            return true;
+        }
 
-        if (( // rows
-        board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
-                || (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')
-                || (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')
-                // cols
-                || (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')
-                || (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X')
-                || (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')
-                // diag
-                || (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
-                || (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')){
-                    printBoard(board);
-                    System.out.println("Player wins !");
-                    return true;
+        if(hasContestentWon(board, 'O')){
+            printBoard(board);
+            System.out.println("Computer wins !");
+            return true;
+        }
 
-                }
-
-            for (int i = 0; i < board.length; i++) {
-                for (int j = 0; j < board[i].length; j++) {
-                    if (board[i][j] == ' ') {
-                        return false;
-                    }
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == ' ') {
+                    return false;
                 }
             }
+        }
 
         printBoard(board);
         System.out.println("The game ended in a tie");
         return true;
+    }
+
+    private static boolean hasContestentWon(char[][] board, char symbol) {
+        if (( // rows
+        board[0][0] == symbol && board[0][1] == symbol && board[0][2] == symbol)
+                || (board[1][0] == symbol && board[1][1] == symbol && board[1][2] == symbol)
+                || (board[2][0] == symbol && board[2][1] == symbol && board[2][2] == symbol)
+                // cols
+                || (board[0][0] == symbol && board[1][0] == symbol && board[2][0] == symbol)
+                || (board[0][1] == symbol && board[1][1] == symbol && board[2][1] == symbol)
+                || (board[0][2] == symbol && board[1][2] == symbol && board[2][2] == symbol)
+                // diag
+                || (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
+                || (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol)) {
+
+            return true;
+        }
+        return false;
     }
 
     private static void computerMove(char[][] board) {
