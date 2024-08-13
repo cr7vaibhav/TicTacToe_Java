@@ -1,5 +1,18 @@
 public class TicTacToe {
     public static void main(String[] args) throws Exception {
-        char[][]
+        char[][] board = { { '1', '2', '3' }, { '2', '3', '1' }, { '2', '1', '7' } };
+
+        printBoard(board);
+        
+    }
+    
+
+    //method to print the board
+    private static void printBoard(char[][] board) {
+        System.out.println(board[0][0] + "|" + board[0][1] + "|" + board[0][2]);
+        System.out.println("-+-+-");
+        System.out.println(board[1][0] + "|" + board[1][1] + "|" + board[1][2]);
+        System.out.println("-+-+-");
+        System.out.println(board[2][0] + "|" + board[2][1] + "|" + board[2][2]);
     }
 }
